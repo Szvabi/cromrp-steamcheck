@@ -7,93 +7,79 @@
 
   <style>
     :root{
-      --bg1:#0b0f16;
-      --bg2:#0f1720;
-      --card:#111827;
-      --card2:#0e1623;
+      --bg:#0b0f14;
+      --card:#11161d;
       --border:rgba(255,255,255,.10);
       --text:#e5e7eb;
-      --muted:rgba(229,231,235,.75);
-      --accent:#9ca3af;
-      --shadow:0 18px 55px rgba(0,0,0,.55);
+      --muted:rgba(229,231,235,.70);
+      --btn:#1c2631;
+      --btnHover:#243241;
+      --accent:rgba(255,255,255,.18);
+      --shadow:0 18px 50px rgba(0,0,0,.55);
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(156,163,175,.12), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(156,163,175,.10), transparent 55%),
-        linear-gradient(160deg, var(--bg1), var(--bg2));
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       display:flex;
       align-items:center;
       justify-content:center;
       padding:24px;
     }
 
-    .wrap{
-      width:min(620px, 100%);
-    }
-
-    .card{
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    .box{
+      width:min(560px, 100%);
+      background: var(--card);
       border:1px solid var(--border);
-      border-radius:16px;
-      box-shadow:var(--shadow);
+      border-radius:14px;
+      box-shadow: var(--shadow);
       overflow:hidden;
     }
 
-    .top{
-      padding:18px 20px;
-      background: linear-gradient(180deg, rgba(17,24,39,.75), rgba(14,22,35,.45));
+    .head{
+      padding:14px 18px;
       border-bottom:1px solid var(--border);
       display:flex;
       align-items:center;
-      gap:12px;
+      justify-content:space-between;
+      gap:10px;
     }
-
-    .badge{
-      width:38px;height:38px;border-radius:12px;
-      border:1px solid var(--border);
-      background: radial-gradient(circle at 30% 30%, rgba(156,163,175,.25), transparent 55%),
-                  rgba(255,255,255,.03);
-      display:flex;align-items:center;justify-content:center;
-      font-weight:800; letter-spacing:.5px;
-      color:rgba(229,231,235,.9);
+    .brand{
+      font-weight:700;
+      letter-spacing:.2px;
+      opacity:.95;
     }
-
-    h1{
-      font-size:20px;
-      margin:0;
-      line-height:1.2;
-    }
-    .sub{
-      margin:2px 0 0 0;
+    .small{
+      font-size:12px;
       color:var(--muted);
-      font-size:13px;
+      margin-top:2px;
     }
 
     .body{
-      padding:22px 20px 18px;
+      padding:18px;
     }
 
-    .title{
-      font-size:24px;
+    h1{
+      font-size:18px;
       margin:0 0 8px 0;
+      font-weight:700;
     }
 
-    .desc{
-      margin:0 0 18px 0;
+    p{
+      margin:0;
       color:var(--muted);
       line-height:1.55;
       font-size:14px;
     }
 
-    .btnrow{
+    .row{
+      margin-top:14px;
       display:flex;
+      align-items:center;
       gap:10px;
       flex-wrap:wrap;
     }
@@ -102,84 +88,91 @@
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      padding:12px 16px;
-      border-radius:12px;
-      border:1px solid var(--border);
+      height:38px;
+      padding:0 14px;
+      border-radius:10px;
+      background: var(--btn);
+      color: var(--text);
       text-decoration:none;
-      color:var(--text);
-      background: rgba(156,163,175,.10);
-      transition: transform .08s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
-      font-weight:700;
-      user-select:none;
+      border:1px solid var(--border);
+      transition: background .12s ease, border-color .12s ease;
+      font-weight:600;
+      font-size:14px;
     }
     a.btn:hover{
-      background: rgba(156,163,175,.16);
-      border-color: rgba(255,255,255,.18);
-      box-shadow: 0 0 0 3px rgba(156,163,175,.10);
+      background: var(--btnHover);
+      border-color: var(--accent);
     }
-    a.btn:active{ transform: translateY(1px); }
 
-    .btn.primary{
-      background: rgba(156,163,175,.18);
+    .status{
+      margin-top:12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted);
+      font-size:13px;
     }
+
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: rgba(255,255,255,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .dot::after{
+      content:"";
+      position:absolute; inset:-8px;
+      border-radius:50%;
+      border:2px solid rgba(255,255,255,.20);
+      border-top-color: rgba(255,255,255,.70);
+      animation: spin .9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
     .foot{
-      padding:14px 20px 18px;
+      padding:12px 18px;
       border-top:1px solid var(--border);
-      color:rgba(229,231,235,.6);
+      color:rgba(229,231,235,.55);
       font-size:12px;
-      line-height:1.5;
     }
 
     code{
       background: rgba(0,0,0,.25);
       border:1px solid rgba(255,255,255,.08);
-      padding:2px 6px;
+      padding:1px 6px;
       border-radius:8px;
-      color:rgba(229,231,235,.9);
+      color:rgba(229,231,235,.85);
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <div class="top">
-        <div class="badge">C</div>
-        <div>
-          <h1>CromRP</h1>
-          <div class="sub">Steam indítása / ellenőrzés</div>
-        </div>
+  <div class="box">
+    <div class="head">
+      <div>
+        <div class="brand">CromRP</div>
+        <div class="small">Steam ellenőrzés</div>
+      </div>
+      <div class="small">Automatikus indítás…</div>
+    </div>
+
+    <div class="body">
+      <h1>Steam hamarosan el fog indulni</h1>
+      <p>
+        Megpróbálom automatikusan megnyitni a Steamet.
+        Ha <b>nem indul el</b> pár másodpercen belül, kattints a gombra.
+      </p>
+
+      <div class="status" id="status">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="countText">Indítás…</span>
       </div>
 
-      <div class="body">
-        <h2 class="title">Steam indítása…</h2>
-        <p class="desc">
-          Megpróbálom megnyitni a Steamet. Ha nem indul el automatikusan, kattints a gombra.
-          <br><br>
-          Tipp: ha a FiveM / böngésző rákérdez, engedélyezd az alkalmazás megnyitását.
-        </p>
-
-        <div class="btnrow">
-          <a class="btn primary" id="openSteam" href="steam://open/main">🚀 Steam megnyitása</a>
-          <a class="btn" href="https://store.steampowered.com/about/">⬇️ Steam letöltése</a>
-        </div>
-      </div>
-
-      <div class="foot">
-        Ha elindult a Steam, menj vissza a FiveM-be és nyomd meg az <b>Újraellenőrzés</b> gombot.
-        <br>
-        (Protokoll: <code>steam://open/main</code>)
+      <div class="row">
+        <a class="btn" id="openSteam" href="steam://open/main">Steam megnyitása</a>
+        <a class="btn" href="https://store.steampowered.com/about/">Steam letöltése</a>
       </div>
     </div>
-  </div>
 
-  <script>
-    setTimeout(() => { window.location.href = "steam://open/main"; }, 120);
-
-    document.getElementById('openSteam').addEventListener('click', () => {
-      setTimeout(() => { window.location.href = "steam://open/main"; }, 10);
-    });
-  </script>
-</body>
-</html>
+    <div class="foot">
+      Protokoll: <code>steam://open/main</code> — ha a böngésző rákérdez, engedélyezd az alkalmazás megnyitását.
+   
